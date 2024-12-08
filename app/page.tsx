@@ -1,10 +1,20 @@
-import Image from "next/image";
+import Hero from '@/components/Hero'
+import Navbar from '@/components/Navbar'
+import React from 'react'
+import Grid from "@/components/Grid"
+// import Experience from "@/components/Experience"
 
-export default function Home() {
+const page = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-  <h1 className="text-3xl font-bold underline">Hello world!</h1>
-
-    </div>
-  );
+    <main className="relative flex justify-center items-center flex-col overflow-hidden">
+      <div className=" w-full">
+        <Navbar/>
+        <Hero />
+        <Grid />
+        {/* <Experience/> */}
+      </div>
+    </main>
+  )
 }
+
+export default page
