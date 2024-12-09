@@ -4,7 +4,8 @@ import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 const Grid = () => {
     return (
       <div className="bg-[#010204] pb-5">
-            <BentoGrid className="w-[70vw]">
+        Grid
+            {/* <BentoGrid className="w-[70vw]">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
@@ -19,7 +20,7 @@ const Grid = () => {
           titleClassName={item.titleClassName}
         />
       ))}
-    </BentoGrid>
+    </BentoGrid> */}
       </div>
     
   )
