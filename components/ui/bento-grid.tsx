@@ -90,8 +90,8 @@ export const BentoGridItem = ({
     >
       {/* add img divs */}
       {id === 5 && (
-        // <BackgroundBeams />
-        <div>Background Beams</div>
+        <BackgroundBeams />
+       
           )
           }
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
@@ -119,13 +119,11 @@ export const BentoGridItem = ({
         </div>
         {id === 6 && (
           // add background animation , remove the p tag
-            // <BackgroundGradientAnimation>
-            //               <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
+            <BackgroundGradientAnimation>
+                          <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
 
-          // </BackgroundGradientAnimation>
-          <div>
-            Background Gradient Animation
-          </div>
+          </BackgroundGradientAnimation>
+          
             
           
         )}
@@ -191,9 +189,8 @@ export const BentoGridItem = ({
                 className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
                   }`}
               >
-                {/* <img src="/confetti.gif" alt="confetti" /> */}
                 {/* <Lottie options={defaultOptions} height={200} width={400} /> */}
-                <div>Lottie</div>
+                
               </div>
 
               <MagicButton
