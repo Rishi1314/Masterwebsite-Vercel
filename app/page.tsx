@@ -10,7 +10,7 @@ const page = () => {
       <div className=" w-full">
          <Navbar/>
         <Hero />
-        <Grid /> *
+        <Grid /> 
         {/* <Experience/> */}
       </div>
     </main>
