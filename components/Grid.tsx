@@ -3,7 +3,7 @@ import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 const Grid = () => {
     return (
-      <div className="bg-[#010204] pb-5">
+      <div id="about" className="bg-[#010204] pb-5">
         
             <BentoGrid className="w-[70vw]">
       {items.map((item, i) => (
@@ -42,8 +42,8 @@ const Grid = () => {
   },
   {
     id: 2,
-    title: "Charlotte, NC, USA",
-    description: "Currently in",
+    title: "",
+    description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "text-white font-bold text-2xl justify-start",
@@ -62,8 +62,8 @@ const Grid = () => {
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
-    description: "",
+    title: "Charlotte, NC",
+    description: "currently in",
     className: " lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
     titleClassName: "text-white font-bold text-2xl justify-start",

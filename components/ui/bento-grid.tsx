@@ -14,6 +14,7 @@ import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
 import { BackgroundBeams } from "./background-beams";
 import Image from "next/image";
+import GitHubCalendar from "react-github-calendar";
 
 export const BentoGrid = ({
   className,
@@ -83,7 +84,7 @@ export const BentoGridItem = ({
         className
       )}
       
-      style={id === 4 ? {background:"rgba(254, 139, 38, 0.8)"} :id === 5 ? {background:"rgba(29, 29, 29, 0.97)"}:id===3?{background:"#FEF9F2",border:"solid 3px grey"}:{
+      style={id === 2 ? { background: "#697565" } :id === 4 ? {background:"rgba(254, 139, 38, 0.8)"} :id === 5 ? {background:"rgba(29, 29, 29, 0.97)"}:id===3?{background:"#FEF9F2",border:"solid 3px grey"}:{
         background: "rgb(43,43,43)",
         backgroundColor: "radial-gradient(circle, rgba(43,43,43,1) 65%, rgba(94,94,95,1) 83%, rgba(137,137,138,0.9893207282913166) 100%)"
       }}
@@ -147,7 +148,10 @@ export const BentoGridItem = ({
           </div>
 
           {/* for the github 3d globe */}
-          {id === 2}
+          {id === 2 && (
+            <GitHubCalendar username="rishi1314" hideColorLegend={true} />
+
+          )}
 
           {/* Tech stack list div */}
           {id === 3 && (
