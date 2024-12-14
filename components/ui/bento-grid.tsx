@@ -57,7 +57,7 @@ export const BentoGridItem = ({
   spareImg?: string;
 }) => {
   const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
+  const rightLists = ["Python", "NextJS", "SQL"];
 
   const [copied, setCopied] = useState(false);
 
@@ -167,10 +167,10 @@ export const BentoGridItem = ({
                     {item}
                   </span>
                 ))}
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center r bg-[#5280f69c"></span>
+                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#5280f69c"></span>
               </div>
               <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#c44af9cb]"></span>
+                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg opacity-50 text-center bg-[#c44af9cb]"></span>
                 {rightLists.map((item, i) => (
                   <span
                     key={i}
