@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar'
 import React from 'react'
 import Grid from "@/components/Grid"
 import Experience from "@/components/Experience"
+import Projects from '@/components/Projects'
 
 const page = () => {
   return (
@@ -11,7 +12,8 @@ const page = () => {
          <Navbar/>
         <Hero />
         <Grid /> 
-        <Experience/>
+        <Experience />
+        <Projects/>
         
       </div>
       <div className='w-full text-center text-3xl  font-bold p-10 text-orange-500'>
