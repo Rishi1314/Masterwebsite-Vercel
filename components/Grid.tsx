@@ -32,7 +32,7 @@ const Grid = () => {
   const items = [
     {
     id: 1,
-    title: "I’m Rishi Raj Bobbarapalli, a Computer Science graduate student passionate about AI, web development, and solving real-world problems through technology. With experience in building innovative software and leading workshops, I enjoy creating solutions that inspire and empower. Outside of tech, I love basketball and collaborative challenges. ",
+      title: "Hi, I'm Rishi Raj Bobbarapalli! I'm a Computer Science grad student who's passionate about AI, web development, and using technology to solve real-world problems. I love building things that make a difference and sharing knowledge through workshops and collaboration. When I'm not coding or brainstorming ideas, you'll probably find me on the basketball court or diving into fun challenges with friends. For me, it's all about learning, growing, and making an impact while having a little fun along the way!",
     description: "Who am I?",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
