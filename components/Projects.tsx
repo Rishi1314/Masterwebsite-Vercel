@@ -6,7 +6,8 @@ const data = [
     {
         title: "ToShare",
         date: "2023",
-        abstract:"Simple File Sharing."
+        abstract:"Simple File Sharing.",
+        imageUrl:"/tosharephoto.png"
       
     },
     
