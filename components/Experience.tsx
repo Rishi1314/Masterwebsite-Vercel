@@ -6,8 +6,8 @@ function TimelineDemo() {
     {
       title: "August 2024",
       content: (
-        <div>
-          <p className=" text-green-500  text-3xl  font-bold mb-2">
+        <div className="">
+          <p className=" text-green-500  text-2xl  font-bold mb-2">
             MS in CS @ UNC Charlotte
           </p>
           <p className="text-lg font-semibold mb-4">
@@ -49,8 +49,8 @@ function TimelineDemo() {
     {
       title: "May 2024",
       content: (
-        <div>
-          <p className=" text-sky-500 text-3xl  font-bold mb-2">
+        <div className="">
+          <p className=" text-sky-500 text-2xl  font-bold mb-2">
             Graduated from IARE.
           </p>
           <p className="text-2xl font-semibold">
@@ -92,19 +92,19 @@ function TimelineDemo() {
     {
       title: "May 2023",
       content: (
-        <div>
-          <p className="  text-3xl  font-bold mb-2">
+        <div className="">
+          <p className="  text-xl  font-bold mb-2">
             Completed my <span className="text-teal-500">Internship</span> at SYNTHEIM.
           </p>
           <Image
-              src="/internshipcert.jpg"
+              src="/internshipcert.jpeg"
               alt="hero template"
               width={500}
               height={500}
               className=" hover:scale-125 cursor-pointer duration-200 rounded-lg object-contain h-fit md:h-44 lg:h-60 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
           />
           <span className="w-[90%] place-self-center block bg-slate-400 h-[1px] my-2"></span>
-          <p className="text-3xl  font-bold mb-2">
+          <p className="text-xl  font-bold mb-2">
             Completed my tenure as the
             <span className=" text-red-500">Web</span>
             <span className=" text-blue-500">  Development</span>
@@ -115,21 +115,21 @@ function TimelineDemo() {
             <span className=" text-green-500"> Student</span>
             <span className=" text-yellow-500"> Club.</span>
           </p>
-          <div className="flex gap-4">
+          <div className="flex  lg:gap-4">
             
              <Image
               src="/gdsccert.jpeg"
               alt="feature template"
               width={500}
               height={500}
-              className=" hover:scale-125 cursor-pointer duration-200 rounded-lg object-cover h-fit md:h-44 lg:h-60 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              className=" hover:scale-125 cursor-pointer duration-200 rounded-lg object-cover h-0 md:h-44 lg:h-60 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
             <Image
               src="/gdscphoto.jpeg"
               alt="bento template"
               width={500}
               height={500}
-              className="hover:scale-125 cursor-pointer duration-200 rounded-lg object-cover h-fit md:h-44 lg:h-60 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              className="hover:scale-125 cursor-pointer duration-200 rounded-lg object-cover h-[200px] md:h-44 lg:h-60 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
             {/*<Image
               src=""
@@ -145,11 +145,11 @@ function TimelineDemo() {
     {
       title: "November 2023",
       content: (
-        <div>
-          <p className="text-3xl  font-bold mb-2">
+        <div className="">
+          <p className="text-xl  font-bold mb-2">
             Started Working as a <span className=" text-teal-500"> Software Developer Intern</span> at SYNTHEIM
           </p>
-          <p className="text-3xl  font-bold">
+          <p className="text-xl  font-bold">
           Commenced my tenure as the Web Development Executive Lead at Google Developer Student Club.          </p>
           
         </div>

@@ -14,7 +14,7 @@ const data = [
     
   ];
   return (
-      <div className="w-full flex bg-[#010206]  gap-2  flex-col items-center">
+      <div className="w-full flex bg-[#010206] mt-5 py-2  gap-4  flex-col items-center">
           <div className='text-white text-4xl font-bold' >My Projects</div>
       <ProjectWork data={data} />
     </div>
