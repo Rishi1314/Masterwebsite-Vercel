@@ -62,7 +62,7 @@ const Grid = () => {
   },
   {
     id: 4,
-    title: "Charlotte, NC",
+    title: "📍 Charlotte, NC",
     description: "currently in",
     className: " lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -83,7 +83,7 @@ const Grid = () => {
   },
   {
     id: 6,
-    title: "Let's Talk.",
+    title: "🤝 Open to collabs, convos & coffee chats",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
