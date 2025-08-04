@@ -8,8 +8,8 @@ const data = [
         date: "2023",
         abstract:"Built ToShare, a web app that makes decentralized file sharing simple and fun. It uses IPFS and Web3Storage for secure storage and lets you retrieve files with easy-to-remember word-based strings no long links or hassle. The user-friendly design keeps everything straightforward, so sharing and accessing files feels effortless.",
     imageUrl: "/tosharephoto.png",
-    techStack: ["ReactJS", "|", "ChakraUI", "|", "IPFS", "|", "Web3Storage", "|", "Google Firebase"],
-      
+    techStack: ["ReactJS", "ChakraUI", "IPFS",  "Web3Storage", "Google Firebase"],
+      projectUrl:"https://www.toshare.vercel.app"
     },
     
   ];
