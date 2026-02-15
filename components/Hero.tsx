@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
+import myphoto from "@/images/myphoto.png";
 import mycartoon from "@/images/mycartoon.png"
 import { Spotlight } from "./ui/Spotlight";
 import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
@@ -49,7 +50,7 @@ const Hero = () => {
         }}
       >
         <Image
-          src={mycartoon}
+          src={myphoto}
           alt="me"
           className="z-10 rounded-full bored border-solid border-[2px] border-gray-600 bg-[#706e6ec6] profilePhoto aspect-square w-[15rem]"
         />
@@ -73,9 +74,9 @@ const Hero = () => {
         }}
         className="text-xl sm:text-xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
         Wanna work together? here is <span>
-          <a href="https://drive.google.com/file/d/1j2sxL-gNJj_Cx0mySKfIzcg7ewXnzitq/view?usp=drive_link" target="_blank">
+          <a href="https://drive.google.com/file/d/1aU1L3kvyHMOqC44Ix7024V8o_HWjF113/view?usp=sharing" target="_blank">
             <MagicButton
-              title="my Resume"
+              title="My Resume"
               position="right"
             />
           </a>
