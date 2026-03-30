@@ -4,21 +4,21 @@ import React from 'react'
 import Grid from "@/components/Grid"
 import Experience from "@/components/Experience"
 import Projects from '@/components/Projects'
+import Skills from '@/components/Skills'
+import Contact from '@/components/Contact'
 
 const page = () => {
   return (
     <main className="relative flex justify-center items-center flex-col overflow-hidden">
-      <div className=" w-full">
-         <Navbar/>
+      <div className="w-full">
+        <Navbar />
         <Hero />
-        <Grid /> 
+        <Grid />
         <Experience />
-        <Projects/>
-        
+        <Projects />
+        <Skills />
+        <Contact />
       </div>
-      <div className='w-full text-center text-3xl  font-bold p-10 text-orange-500'>
-          Website still under Development
-        </div>
     </main>
   )
 }
