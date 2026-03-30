@@ -45,8 +45,8 @@ function cardStyle(id: number): React.CSSProperties {
     border: "1px solid rgba(34,211,238,0.15)",
   };
   if (id === 5) return {
-    background: "#060610",
-    border: "1px solid rgba(129,140,248,0.08)",
+    background: "linear-gradient(145deg, #0a0a1a 0%, #0d0d24 100%)",
+    border: "1px solid rgba(129,140,248,0.12)",
   };
   /* id === 6 */
   return {
@@ -96,8 +96,8 @@ export const BentoGridItem = ({
       {/* Top highlight line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent pointer-events-none" />
 
-      {/* Background beams on card 5 */}
-      {id === 5 && <BackgroundBeams />}
+      {/* Background beams on card 5 — dimmed so text stays readable */}
+      {id === 5 && <div className="opacity-30"><BackgroundBeams /></div>}
 
       <div className={`${id === 6 ? "flex justify-center" : ""} h-full`}>
         {/* Optional background image */}
@@ -137,8 +137,8 @@ export const BentoGridItem = ({
             className={cn(
               "font-sans text-xs md:text-sm z-10 mb-2",
               id === 4
-                ? "text-cyan-400/70 font-medium uppercase tracking-widest"
-                : "text-white/35 font-light uppercase tracking-wider"
+                ? "text-cyan-300 font-semibold uppercase tracking-widest"
+                : "text-white/55 font-medium uppercase tracking-wider"
             )}
           >
             {description}

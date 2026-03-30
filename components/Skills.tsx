@@ -85,7 +85,7 @@ export default function Skills() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
             Tech Stack
           </h2>
-          <p className="text-white/45 text-lg">The tools I build with</p>
+          <p className="text-white/60 text-lg">The tools I build with</p>
         </motion.div>
 
         {/* Skill cards */}

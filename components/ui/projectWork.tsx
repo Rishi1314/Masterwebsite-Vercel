@@ -101,7 +101,7 @@ function ProjectCard({
         </div>
       </div>
 
-      <span className="text-white/45 text-sm mt-1">{project.date}</span>
+      <span className="text-white/60 text-sm mt-1">{project.date}</span>
     </div>
   );
 
@@ -110,7 +110,7 @@ function ProjectCard({
       {project.techStack.map((tech, i) => (
         <span
           key={i}
-          className="text-xs px-3 py-1 rounded-full border border-white/10 bg-white/[0.05] text-white/75"
+          className="text-xs px-3 py-1 rounded-full border border-indigo-500/25 bg-indigo-500/10 text-indigo-200"
         >
           {tech}
         </span>
@@ -201,7 +201,7 @@ const ProjectWork = ({ data }: { data: Project[] }) => {
       whileInView="show"
       
       viewport={{ once: true, amount: 0.18 }}
-      className="w-full max-w-6xl mt-8 bg-[#010206]"
+      className="w-full max-w-6xl mt-8 bg-transparent px-4 md:px-0"
     >
       {/* Featured: first one bigger */}
       <motion.div variants={itemVariants} className="mb-10">

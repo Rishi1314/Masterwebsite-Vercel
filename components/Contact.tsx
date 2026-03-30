@@ -68,7 +68,7 @@ export default function Contact() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Let&apos;s Connect
           </h2>
-          <p className="text-white/45 text-lg max-w-md mx-auto">
+          <p className="text-white/60 text-lg max-w-md mx-auto">
             Open to new roles, collabs, and coffee chats ☕
           </p>
         </motion.div>
@@ -96,7 +96,7 @@ export default function Contact() {
               <s.Icon className={`text-4xl text-white/50 transition-colors duration-300 ${s.iconColor}`} />
               <div>
                 <p className="text-white font-semibold text-lg">{s.name}</p>
-                <p className="text-white/40 text-sm mt-0.5">{s.handle}</p>
+                <p className="text-white/55 text-sm mt-0.5">{s.handle}</p>
               </div>
             </motion.a>
           ))}
@@ -129,7 +129,7 @@ export default function Contact() {
         transition={{ duration: 0.8, delay: 0.5 }}
         className="mt-20 text-center border-t border-white/[0.06] pt-8"
       >
-        <p className="text-white/20 text-sm">
+        <p className="text-white/40 text-sm">
           Built with Next.js · Framer Motion · Tailwind CSS
           <span className="mx-2">·</span>
           Rishi Raj Bobbarapalli © 2025

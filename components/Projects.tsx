@@ -45,7 +45,7 @@ const data = [
   return (
     <div id="projects" className="w-full flex bg-[#0a0b18] mt-5 py-10 gap-4 flex-col items-center">
       <div className="text-white text-4xl md:text-5xl font-bold mb-2">My Projects</div>
-      <p className="text-white/45 text-lg mb-4">Things I&apos;ve built that I&apos;m proud of</p>
+      <p className="text-white/60 text-lg mb-4">Things I&apos;ve built that I&apos;m proud of</p>
       <ProjectWork data={data} />
     </div>
   );

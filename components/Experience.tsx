@@ -1,223 +1,209 @@
-import Image from "next/image";
+"use client";
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
-function TimelineDemo() {
+
+/* ── reusable sub-components ─────────────────────── */
+
+type BadgeVariant = "work" | "education" | "research" | "leadership";
+
+const badgeStyles: Record<BadgeVariant, string> = {
+  work:       "bg-indigo-500/15 border-indigo-500/30 text-indigo-300",
+  education:  "bg-emerald-500/15 border-emerald-500/30 text-emerald-300",
+  research:   "bg-violet-500/15 border-violet-500/30 text-violet-300",
+  leadership: "bg-amber-500/15 border-amber-500/30 text-amber-300",
+};
+
+const titleColors: Record<BadgeVariant, string> = {
+  work:       "text-indigo-400",
+  education:  "text-emerald-400",
+  research:   "text-violet-400",
+  leadership: "text-amber-400",
+};
+
+function Badge({ type, label }: { type: BadgeVariant; label: string }) {
+  return (
+    <span className={`inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium border ${badgeStyles[type]}`}>
+      {label}
+    </span>
+  );
+}
+
+function TechPill({ tech }: { tech: string }) {
+  return (
+    <span className="px-2.5 py-1 rounded-lg text-xs bg-white/5 border border-white/10 text-white/65">
+      {tech}
+    </span>
+  );
+}
+
+interface EntryProps {
+  type: BadgeVariant;
+  badgeLabel: string;
+  role: string;
+  org: string;
+  location: string;
+  period: string;
+  bullets: string[];
+  tech?: string[];
+}
+
+function EntryCard({ type, badgeLabel, role, org, location, period, bullets, tech }: EntryProps) {
+  return (
+    <div className="rounded-2xl bg-white/[0.03] border border-white/[0.08] p-5 md:p-6 space-y-4">
+      {/* header */}
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <div className="space-y-1.5">
+          <Badge type={type} label={badgeLabel} />
+          <h3 className={`text-lg md:text-xl font-bold mt-1 ${titleColors[type]}`}>{role}</h3>
+          <p className="text-white/80 font-semibold text-sm md:text-base">{org}</p>
+          <p className="text-white/40 text-xs">{location}</p>
+        </div>
+        <span className="text-white/35 text-xs md:text-sm font-mono whitespace-nowrap mt-1">{period}</span>
+      </div>
+
+      {/* bullet points */}
+      <ul className="space-y-2">
+        {bullets.map((b, i) => (
+          <li key={i} className="flex gap-2 text-sm text-white/70 leading-relaxed">
+            <span className={`mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0 ${
+              type === "work" ? "bg-indigo-400" :
+              type === "education" ? "bg-emerald-400" :
+              type === "research" ? "bg-violet-400" : "bg-amber-400"
+            }`} />
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* tech pills */}
+      {tech && tech.length > 0 && (
+        <div className="flex flex-wrap gap-2 pt-1">
+          {tech.map(t => <TechPill key={t} tech={t} />)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── timeline data ────────────────────────────────── */
+
+export default function Experience() {
   const data = [
     {
-      title: "August 2024",
+      title: "Aug 2024",
       content: (
-        <div className="">
-          <p className=" text-green-500  text-2xl  font-bold mb-2">
-            MS in CS @ UNC Charlotte
-          </p>
-          <p className="text-lg font-semibold mb-4">
-          Commenced my graduate studies at the University of North Carolina at Charlotte in Fall 2024.
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            <Image
-              src="/clgphoto1.jpg"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="hover:scale-125 cursor-pointer duration-200 rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            {/* <Image
-              src="/b5.svg"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <Image
-              src="/b5.svg"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <Image
-              src="/b5.svg"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            /> */}
-          </div>
-        </div>
+        <EntryCard
+          type="education"
+          badgeLabel="Education"
+          role="Master of Science in Computer Science"
+          org="University of North Carolina at Charlotte"
+          location="Charlotte, NC"
+          period="Aug 2024 – May 2026"
+          bullets={[
+            "GPA: 4.00 / 4.00",
+            "Focusing on distributed systems, machine learning, and scalable software engineering.",
+          ]}
+        />
       ),
     },
     {
-      title: "May 2024",
+      title: "Jun 2023",
       content: (
-        <div className="">
-          <p className=" text-sky-500 text-2xl  font-bold mb-2">
-            Graduated from IARE.
-          </p>
-          <p className="text-2xl font-semibold">
-          Successfully completed my Bachelor's degree in Computer Science.
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            {/* <Image
-              src=""
-              alt="hero template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            /> */}
-            {/* <Image
-              src=""
-              alt="feature template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <Image
-              src=""
-              alt="bento template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <Image
-              src=""
-              alt="cards template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            /> */}
-          </div>
-        </div>
+        <EntryCard
+          type="work"
+          badgeLabel="Full-Time"
+          role="Software Development Engineer, Full Stack"
+          org="SYNTHEIM"
+          location="Hyderabad, India"
+          period="Jun 2023 – Jun 2024"
+          bullets={[
+            "Built backend services and REST APIs in Java, Node.js, and TypeScript; shipped React frontend features; owned work end-to-end across 8 microservices in close collaboration with product and design.",
+            "Reduced API latency by 30% via Redis caching and PostgreSQL query optimization; improved CPU utilization by 20% through profiling and refactoring — both measured under load tests using k6.",
+            "Deployed on AWS (Lambda, S3, SQS, CloudWatch); containerized with Docker and Kubernetes; automated CI/CD cutting deployment time by 40%; resolved 10+ production incidents on-call.",
+            "Drove 15+ code reviews; integrated LLM APIs and AI-assisted tools into development workflows; worked in fast-paced Agile sprints shipping features consistently.",
+          ]}
+          tech={["Java", "Node.js", "TypeScript", "React", "Redis", "PostgreSQL", "AWS", "Docker", "Kubernetes", "CI/CD"]}
+        />
       ),
     },
     {
-      title: "May 2023",
+      title: "Aug 2023",
       content: (
-        <div className="">
-          <p className="  text-xl  font-bold mb-2">
-            Completed my <span className="text-teal-500">Internship</span> at SYNTHEIM.
-          </p>
-          <Image
-              src="/internshipcert.jpeg"
-              alt="hero template"
-              width={500}
-              height={500}
-              className=" hover:scale-125 cursor-pointer duration-200 rounded-lg object-contain h-fit md:h-44 lg:h-60 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <span className="w-[90%] place-self-center block bg-slate-400 h-[1px] my-2"></span>
-          <p className="text-xl  font-bold mb-2">
-            Completed my tenure as the
-            <span className=" text-red-500">Web</span>
-            <span className=" text-blue-500">  Development</span>
-            <span className=" text-green-500"> Executive</span>
-            <span className=" text-yellow-500"> Lead</span> for the  
-            <span className=" text-red-500"> Google</span>
-            <span className=" text-blue-500"> Developer</span>
-            <span className=" text-green-500"> Student</span>
-            <span className=" text-yellow-500"> Club.</span>
-          </p>
-          <div className="flex  lg:gap-4">
-            
-             <Image
-              src="/gdsccert.jpeg"
-              alt="feature template"
-              width={500}
-              height={500}
-              className=" hover:scale-125 cursor-pointer duration-200 rounded-lg object-cover h-0 md:h-44 lg:h-60 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <Image
-              src="/gdscphoto.jpeg"
-              alt="bento template"
-              width={500}
-              height={500}
-              className="hover:scale-125 cursor-pointer duration-200 rounded-lg object-cover h-[200px] md:h-44 lg:h-60 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            {/*<Image
-              src=""
-              alt="cards template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            /> */}
-          </div>
-        </div>
+        <EntryCard
+          type="research"
+          badgeLabel="Research"
+          role="Research Assistant, Distributed Systems"
+          org="Institute of Aeronautical Engineering"
+          location="Hyderabad, India"
+          period="Aug 2023 – May 2024"
+          bullets={[
+            "Built Python automation pipelines benchmarking 1,000+ distributed IPFS workloads.",
+            "Identified 5 performance bottlenecks cutting total runtime by 25% via parallel computing techniques.",
+            "Documented findings and presented optimization strategies to engineering leads.",
+          ]}
+          tech={["Python", "IPFS", "Parallel Computing", "Automation"]}
+        />
       ),
     },
     {
-      title: "November 2023",
+      title: "Sep 2022",
       content: (
-        <div className="">
-          <p className="text-xl  font-bold mb-2">
-            Started Working as a <span className=" text-teal-500"> Software Developer Intern</span> at SYNTHEIM
-          </p>
-          <p className="text-xl  font-bold">
-          Commenced my tenure as the Web Development Executive Lead at Google Developer Student Club.          </p>
-          
-        </div>
+        <EntryCard
+          type="leadership"
+          badgeLabel="Leadership"
+          role="Technical Lead"
+          org="Google Developer Student Club — Institute of Aeronautical Engineering"
+          location="Hyderabad, India"
+          period="Sep 2022 – May 2023"
+          bullets={[
+            "Led workshops on full-stack development, algorithms, and distributed systems for 700+ students.",
+            "Reviewed 50+ student codebases, providing feedback on performance, reliability, and code quality.",
+          ]}
+          tech={["Full-Stack", "Algorithms", "Distributed Systems", "Mentorship"]}
+        />
       ),
     },
-    // {
-    //   title: "Changelog",
-    //   content: (
-    //     <div>
-    //       <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
-    //         Deployed 5 new components on Aceternity today
-    //       </p>
-    //       <div className="mb-8">
-    //         <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-    //           ✅ Card grid component
-    //         </div>
-    //         <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-    //           ✅ Startup template Aceternity
-    //         </div>
-    //         <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-    //           ✅ Random file upload lol
-    //         </div>
-    //         <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-    //           ✅ Himesh Reshammiya Music CD
-    //         </div>
-    //         <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-    //           ✅ Salman Bhai Fan Club registrations open
-    //         </div>
-    //       </div>
-    //       <div className="grid grid-cols-2 gap-4">
-    //         <Image
-    //           src=""
-    //           alt="hero template"
-    //           width={500}
-    //           height={500}
-    //           className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-    //         />
-    //         <Image
-    //           src=""
-    //           alt="feature template"
-    //           width={500}
-    //           height={500}
-    //           className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-    //         />
-    //         <Image
-    //           src=""
-    //           alt="bento template"
-    //           width={500}
-    //           height={500}
-    //           className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-    //         />
-    //         <Image
-    //           src=""
-    //           alt="cards template"
-    //           width={500}
-    //           height={500}
-    //           className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-    //         />
-    //       </div>
-    //     </div>
-    //   ),
-    // },
+    {
+      title: "Nov 2022",
+      content: (
+        <EntryCard
+          type="work"
+          badgeLabel="Internship"
+          role="Software Developer Intern"
+          org="SYNTHEIM"
+          location="Hyderabad, India"
+          period="Nov 2022 – May 2023"
+          bullets={[
+            "Built Java and Node.js backend services; designed PostgreSQL schemas; implemented OAuth 2.0 authentication.",
+            "Shipped React UI components; wrote unit tests; earned full-time conversion offer.",
+            "Automated CI/CD with GitHub Actions; applied code review feedback to improve reliability.",
+          ]}
+          tech={["Java", "Node.js", "PostgreSQL", "React", "OAuth 2.0", "GitHub Actions"]}
+        />
+      ),
+    },
+    {
+      title: "Aug 2020",
+      content: (
+        <EntryCard
+          type="education"
+          badgeLabel="Education"
+          role="Bachelor of Engineering in Computer Science"
+          org="Institute of Aeronautical Engineering"
+          location="Hyderabad, India"
+          period="Aug 2020 – May 2024"
+          bullets={[
+            "Graduated with a BE in Computer Science — foundation in algorithms, data structures, OS, databases, and distributed systems.",
+            "Served as Technical Lead at the Google Developer Student Club during final two years.",
+          ]}
+        />
+      ),
+    },
   ];
+
   return (
     <div id="work" className="w-full">
       <Timeline data={data} />
     </div>
   );
 }
-
-export default TimelineDemo;
