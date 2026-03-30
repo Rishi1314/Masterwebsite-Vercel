@@ -54,7 +54,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="socials" className="w-full bg-[#010206] py-24 px-4">
+    <section id="socials" className="w-full bg-[#0a0b18] py-24 px-4">
       <div className="max-w-4xl mx-auto text-center">
 
         {/* Heading */}

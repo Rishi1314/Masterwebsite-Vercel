@@ -72,7 +72,7 @@ const cardVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="w-full bg-[#010206] py-24 px-4">
+    <section id="skills" className="w-full bg-[#0a0b18] py-24 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Section heading */}
         <motion.div

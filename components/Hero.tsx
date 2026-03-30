@@ -15,20 +15,21 @@ const Hero = () => {
   ];
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden bg-[#05060f]">
+    <div className="relative min-h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden bg-[#0a0b18]">
       {/* Subtle grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(129,140,248,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(129,140,248,0.04)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(129,140,248,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(129,140,248,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       {/* Glow blob */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(99,102,241,0.13),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(99,102,241,0.10),transparent)]" />
 
       {/* Vignette */}
-      <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black_85%)] bg-[#05060f]" />
+      <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black_85%)] bg-[#0a0b18]" />
 
-      <Spotlight className="-top-40 -left-10 md:left-28 md:-top-20" fill="rgba(129,140,248,0.55)" />
-      <Spotlight className="top-10 right-0 md:right-32" fill="rgba(167,139,250,0.35)" />
+      <Spotlight className="-top-40 -left-10 md:left-28 md:-top-20" fill="rgba(129,140,248,0.45)" />
+      <Spotlight className="top-10 right-0 md:right-32" fill="rgba(167,139,250,0.28)" />
 
-      <div className="relative z-10 flex flex-col items-center gap-5 px-4">
+      {/* Extra top padding so photo doesn't sit right under the navbar */}
+      <div className="relative z-10 flex flex-col items-center gap-5 px-4 pt-28 md:pt-32">
         {/* Avatar */}
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -36,8 +37,8 @@ const Hero = () => {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="relative"
         >
-          <div className="absolute -inset-3 rounded-full bg-indigo-500/15 blur-xl" />
-          <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-indigo-500/30 via-violet-500/20 to-transparent" />
+          <div className="absolute -inset-3 rounded-full bg-indigo-500/12 blur-xl" />
+          <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-indigo-500/25 via-violet-500/15 to-transparent" />
           <Image
             src={myphoto}
             alt="Rishi Raj"
@@ -67,59 +68,28 @@ const Hero = () => {
           Full-Stack SDE · MS CS @ UNC Charlotte · Building fast, scalable systems
         </motion.p>
 
-        {/* CTA buttons */}
+        {/* Single CTA */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.55 }}
-          className="flex flex-wrap items-center justify-center gap-3 mt-1"
+          className="mt-1"
         >
-          <a
-            href="https://drive.google.com/file/d/1aU1L3kvyHMOqC44Ix7024V8o_HWjF113/view?usp=sharing"
-            target="_blank"
-            rel="noreferrer"
-            className="relative inline-flex h-11 overflow-hidden rounded-xl p-[1px] focus:outline-none group"
-          >
-            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#818cf8_0%,#4f46e5_50%,#818cf8_100%)]" />
-            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-[#07080f] group-hover:bg-indigo-950/80 transition-colors duration-300 px-6 font-semibold text-white text-sm">
-              View Resume →
-            </span>
-          </a>
-
           <a
             href="#projects"
             onClick={e => {
               e.preventDefault();
               document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="inline-flex h-11 items-center gap-2 px-6 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-indigo-500/30 text-white/60 hover:text-white text-sm font-medium transition-all duration-200"
+            className="inline-flex h-11 items-center gap-2 px-8 rounded-xl border border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20 hover:border-indigo-400/50 text-indigo-300 hover:text-indigo-200 text-sm font-medium transition-all duration-200"
           >
-            See My Work
+            See My Work →
           </a>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-wrap justify-center gap-8 mt-4 pt-6 border-t border-white/[0.06] w-full max-w-sm"
-        >
-          {[
-            { label: "GPA", value: "4.0 / 4.0" },
-            { label: "API Latency Cut", value: "30%" },
-            { label: "Concurrent Users", value: "1K+" },
-          ].map(stat => (
-            <div key={stat.label} className="flex flex-col items-center gap-0.5">
-              <span className="text-indigo-400 font-bold text-lg">{stat.value}</span>
-              <span className="text-white/30 text-xs">{stat.label}</span>
-            </div>
-          ))}
         </motion.div>
       </div>
 
       {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#05060f] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#0a0b18] to-transparent pointer-events-none" />
     </div>
   );
 };
