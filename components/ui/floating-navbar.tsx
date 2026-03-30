@@ -58,17 +58,18 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          // change rounded-full to rounded-lg
-          // remove dark:border-white/[0.2] dark:bg-black bg-white border-transparent
-          // change  pr-2 pl-8 py-2 to px-10 py-5
-          "flex max-w-[80vw] lg:max-w-[40vw] bg-[rgba(23,23,23,0.66)] hover:bg-[rgb(18,18,18)] md:min-w-[70vw]  lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-3 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-evenly space-x-4 duration-400",
+          "flex fixed z-[5000] top-5 inset-x-0 mx-auto items-center justify-evenly",
+          "w-[95vw] max-w-2xl",
+          "px-3 sm:px-6 py-2.5 gap-1 sm:gap-2",
+          "rounded-2xl",
+          "shadow-[0_8px_32px_rgba(0,0,0,0.5)]",
           className
         )}
         style={{
-          backdropFilter: "blur(16px) saturate(180%)",
-          // backgroundColor: "rgb(23,23,23)",
-          borderRadius: "12px",
-          border: "1px solid rgba(255, 255, 255, 0.125)",
+          backdropFilter: "blur(20px) saturate(200%)",
+          backgroundColor: "rgba(7, 8, 20, 0.85)",
+          border: "1px solid rgba(129, 140, 248, 0.15)",
+          borderRadius: "16px",
         }}
       >
         {navItems.map((navItem: any, idx: number) => (
@@ -83,13 +84,12 @@ export const FloatingNav = ({
 
             }}
             className={cn(
-              "relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
+              "relative flex items-center px-2 sm:px-3 py-1.5 rounded-lg",
+              "text-white/50 hover:text-white hover:bg-white/[0.06]",
+              "transition-all duration-200 text-xs sm:text-sm font-medium cursor-pointer"
             )}
           >
-            <span className="block sm:hidden">{navItem.icon}</span>
-            {/* add !cursor-pointer */}
-            {/* remove hidden sm:block for the mobile responsive */}
-            <span className=" text-sm !cursor-pointer">{navItem.name}</span>
+            <span>{navItem.name}</span>
           </Link>
         ))}
         {/* remove this login btn */}

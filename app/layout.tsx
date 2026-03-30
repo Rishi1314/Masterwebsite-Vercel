@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Rishi Raj",
-  description: "Created by Rishi Raj Bobbarapalli",
+  title: "Rishi Raj Bobbarapalli",
+  description: "Portfolio of Rishi Raj Bobbarapalli — Full-Stack SDE, MS CS @ UNC Charlotte",
 };
 
 export default function RootLayout({
@@ -24,10 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        
-      >
+    <html lang="en" className="dark">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>

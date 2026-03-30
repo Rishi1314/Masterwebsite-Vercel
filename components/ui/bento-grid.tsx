@@ -1,20 +1,11 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
-
-// Also install this npm i --save-dev @types/react-lottie
-import Lottie from "react-lottie";
-
 import { cn } from "@/utils/cn";
-
-
 import { BackgroundGradientAnimation } from "./background-gradient-animation";
-// import GridGlobe from "./GridGlobe";
-import animationData from "@/data/confetti.json";
-import MagicButton from "../MagicButton";
 import { BackgroundBeams } from "./background-beams";
-import Image from "next/image";
 import GitHubCalendar from "react-github-calendar";
+import MagicButton from "../MagicButton";
 
 export const BentoGrid = ({
   className,
@@ -26,8 +17,7 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        // change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
-        "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto",
+        "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-5 mx-auto",
         className
       )}
     >
@@ -36,12 +26,39 @@ export const BentoGrid = ({
   );
 };
 
+/* Per-card background styles — all unified to deep navy-indigo palette */
+function cardStyle(id: number): React.CSSProperties {
+  if (id === 1) return {
+    background: "linear-gradient(145deg, #0c0d22 0%, #0f1030 60%, #0a0b1e 100%)",
+    border: "1px solid rgba(129,140,248,0.12)",
+  };
+  if (id === 2) return {
+    background: "linear-gradient(145deg, #080918 0%, #0c0d24 100%)",
+    border: "1px solid rgba(129,140,248,0.1)",
+  };
+  if (id === 3) return {
+    background: "linear-gradient(145deg, #0c0920 0%, #110f2e 100%)",
+    border: "1px solid rgba(167,139,250,0.15)",
+  };
+  if (id === 4) return {
+    background: "linear-gradient(145deg, #060f18 0%, #0b1a28 100%)",
+    border: "1px solid rgba(34,211,238,0.15)",
+  };
+  if (id === 5) return {
+    background: "#060610",
+    border: "1px solid rgba(129,140,248,0.08)",
+  };
+  /* id === 6 */
+  return {
+    border: "1px solid rgba(129,140,248,0.12)",
+  };
+}
+
 export const BentoGridItem = ({
   className,
   id,
   title,
   description,
-  //   remove unecessary things here
   img,
   imgClassName,
   titleClassName,
@@ -56,157 +73,135 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["Python", "NextJS", "SQL"];
+  /* Updated stacks to match actual skills */
+  const leftLists  = ["TypeScript", "Go", "Python"];
+  const rightLists = ["Next.js", "FastAPI", "Redis"];
 
   const [copied, setCopied] = useState(false);
 
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
   const handleCopy = () => {
-    const text = "rishirajprof@gmail.com";
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText("rishirajprof@gmail.com");
     setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   return (
     <div
       className={cn(
-        // remove p-4 rounded-3xl dark:bg-black dark:border-white/[0.2] bg-white  border border-transparent, add border border-white/[0.1] overflow-hidden relative
-        "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4 ",
+        "row-span-1 relative overflow-hidden rounded-2xl group/bento hover:shadow-2xl hover:shadow-indigo-950/40 transition-all duration-300 justify-between flex flex-col space-y-4",
         className
       )}
-      
-      style={id === 2 ? { background: "#697565" } :id === 4 ? {background:"rgba(254, 139, 38, 0.8)"} :id === 5 ? {background:"rgba(29, 29, 29, 0.97)"}:id===3?{background:"#FEF9F2",border:"solid 3px grey"}:{
-        background: "rgb(43,43,43)",
-        backgroundColor: "radial-gradient(circle, rgba(43,43,43,1) 65%, rgba(94,94,95,1) 83%, rgba(137,137,138,0.9893207282913166) 100%)"
-      }}
+      style={cardStyle(id)}
     >
-      {/* add img divs */}
-      {id === 5 && (
-        <BackgroundBeams />
-       
-          )
-          }
-      <div className={`${id === 6 && "flex justify-center"} h-full`}>
+      {/* Top highlight line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent pointer-events-none" />
+
+      {/* Background beams on card 5 */}
+      {id === 5 && <BackgroundBeams />}
+
+      <div className={`${id === 6 ? "flex justify-center" : ""} h-full`}>
+        {/* Optional background image */}
         <div className="w-full h-full absolute">
           {img && (
             <img
               src={img}
-              alt={img}
-              className={cn(imgClassName, "object-cover object-center ")}
+              alt=""
+              className={cn(imgClassName, "object-cover object-center opacity-30")}
             />
           )}
         </div>
-        <div
-          className={`absolute right-0 -bottom-5 ${id === 5 && "w-full opacity-80"
-            } `}
-        >
-          {spareImg && (
-            <img
-              src={spareImg}
-              alt={spareImg}
-              //   width={220}
-              className="object-cover object-center w-full h-full"
-            />
-          )}
-        </div>
-        {id === 6 && (
-          // add background animation , remove the p tag
-            <BackgroundGradientAnimation>
-                          <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
 
+        {/* Spare image */}
+        <div className={`absolute right-0 -bottom-5 ${id === 5 ? "w-full opacity-25" : ""}`}>
+          {spareImg && (
+            <img src={spareImg} alt="" className="object-cover object-center w-full h-full" />
+          )}
+        </div>
+
+        {/* Card 6: gradient animation background */}
+        {id === 6 && (
+          <BackgroundGradientAnimation>
+            <div className="absolute z-50 inset-0 flex items-center justify-center pointer-events-none" />
           </BackgroundGradientAnimation>
-          
-            
-          
         )}
 
+        {/* Content */}
         <div
           className={cn(
             titleClassName,
-            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+            "group-hover/bento:translate-x-1 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 py-5 lg:p-8"
           )}
         >
-          {/* change the order of the title and des, font-extralight, remove text-xs text-neutral-600 dark:text-neutral-300 , change the text-color */}
-          <div className={`font-sans  md:max-w-32 md:text-xs lg:text-lg text-sm ${id===3?"text-black-200":"text-[#C1C2D3] font-extralight"} z-10 `}>
+          {/* Description label */}
+          <div
+            className={cn(
+              "font-sans text-xs md:text-sm z-10 mb-2",
+              id === 4
+                ? "text-cyan-400/70 font-medium uppercase tracking-widest"
+                : "text-white/35 font-light uppercase tracking-wider"
+            )}
+          >
             {description}
           </div>
-          {/* add text-3xl max-w-96 , remove text-neutral-600 dark:text-neutral-300*/}
-          {/* remove mb-2 mt-2 */}
-          <div
-            className={`font-sans z-10`}
-          >
+
+          {/* Title / main text */}
+          <div className="font-sans z-10 leading-relaxed">
             {title}
           </div>
 
-          {/* for the github 3d globe */}
+          {/* Card 2: GitHub contribution calendar */}
           {id === 2 && (
-            <GitHubCalendar username="rishi1314" hideColorLegend={true} />
-
-          )}
-
-          {/* Tech stack list div */}
-          {id === 3 && (
-            <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-              {/* tech stack lists */}
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                {leftLists.map((item, i) => (
-                  <span
-                    key={i}
-                    className="lg:py-4 lg:px-3 text-white py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-lg text-center bg-[#5280f69c]"
-                  >
-                    {item}
-                  </span>
-                ))}
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#5280f69c"></span>
-              </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg opacity-50 text-center bg-[#c44af9cb]"></span>
-                {rightLists.map((item, i) => (
-                  <span
-                    key={i}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-lg text-center text-white bg-[#c44af9cb]"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-          {id === 6 && (
-            <div className="mt-5  relative">
-              {/* button border magic from tailwind css buttons  */}
-              {/* add rounded-md h-8 md:h-8, remove rounded-full */}
-              {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
-              {/* add handleCopy() for the copy the text */}
-              <div
-                className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
-                  }`}
-              >
-                {/* <Lottie options={defaultOptions} height={200} width={400} /> */}
-                
-              </div>
-
-              <MagicButton
-                title={copied ? "Email is Copied!" : "Copy my email address"}
-                icon={<IoCopyOutline />}
-                position="left"
-                handleClick={handleCopy}
-                otherClasses="!bg-[#161A31]"
+            <div className="mt-4 z-10 scale-90 origin-left">
+              <GitHubCalendar
+                username="rishi1314"
+                hideColorLegend
+                colorScheme="dark"
+                theme={{
+                  dark: ["#0d0e20", "#312e81", "#4338ca", "#6366f1", "#a5b4fc"],
+                }}
               />
             </div>
           )}
-         
+
+          {/* Card 3: Tech stack pills */}
+          {id === 3 && (
+            <div className="flex gap-2 lg:gap-3 w-fit absolute -right-2 top-8">
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
+                {leftLists.map((item, i) => (
+                  <span
+                    key={i}
+                    className="py-2 px-3 text-xs lg:text-sm rounded-xl text-center text-indigo-300 bg-indigo-500/15 border border-indigo-500/20 whitespace-nowrap"
+                  >
+                    {item}
+                  </span>
+                ))}
+                <span className="py-3 px-3 rounded-xl bg-indigo-500/5" />
+              </div>
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
+                <span className="py-3 px-3 rounded-xl bg-violet-500/5" />
+                {rightLists.map((item, i) => (
+                  <span
+                    key={i}
+                    className="py-2 px-3 text-xs lg:text-sm rounded-xl text-center text-violet-300 bg-violet-500/15 border border-violet-500/20 whitespace-nowrap"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Card 6: copy email button */}
+          {id === 6 && (
+            <div className="mt-5 relative z-10">
+              <MagicButton
+                title={copied ? "Copied! ✅" : "Copy my email"}
+                position="left"
+                handleClick={handleCopy}
+                otherClasses="!bg-[#0a0b1e]"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
