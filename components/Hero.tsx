@@ -6,16 +6,17 @@ import React from "react";
 import myphoto from "@/images/myphoto.png";
 import { Spotlight } from "./ui/Spotlight";
 import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
+import { site } from "@/data/profile";
 
 const Hero = () => {
   const words = [
     { text: "Hi," },
     { text: "I'm" },
-    { text: "Rishi Raj", className: "text-indigo-400 dark:text-indigo-400" },
+    { text: site.shortName, className: "text-indigo-400" },
   ];
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden bg-[#0a0b18]">
+    <header className="relative min-h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden bg-[#0a0b18]">
       {/* Subtle grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(129,140,248,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(129,140,248,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
@@ -41,7 +42,8 @@ const Hero = () => {
           <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-indigo-500/25 via-violet-500/15 to-transparent" />
           <Image
             src={myphoto}
-            alt="Rishi Raj"
+            alt={`Portrait of ${site.name}`}
+            priority
             className="relative z-10 rounded-full border border-indigo-500/30 aspect-square w-36 md:w-44 object-cover shadow-2xl"
           />
         </motion.div>
@@ -52,6 +54,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
+          <h1 className="sr-only">{site.name}</h1>
           <TypewriterEffectSmooth
             className="text-3xl sm:text-5xl md:text-6xl font-bold"
             words={words}
@@ -63,9 +66,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-white/45 text-sm sm:text-base max-w-md leading-relaxed"
+          className="text-white/45 text-sm sm:text-base max-w-xl leading-relaxed"
         >
-          Full-Stack SDE · MS CS @ UNC Charlotte · Building fast, scalable systems
+          {site.heroSubtitle}
         </motion.p>
 
         {/* Single CTA */}
@@ -79,7 +82,7 @@ const Hero = () => {
             href="#projects"
             onClick={e => {
               e.preventDefault();
-              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("projects")?.scrollIntoView();
             }}
             className="inline-flex h-11 items-center gap-2 px-8 rounded-xl border border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20 hover:border-indigo-400/50 text-indigo-300 hover:text-indigo-200 text-sm font-medium transition-all duration-200"
           >
@@ -90,7 +93,7 @@ const Hero = () => {
 
       {/* Bottom fade into next section */}
       <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#0a0b18] to-transparent pointer-events-none" />
-    </div>
+    </header>
   );
 };
 

@@ -61,3 +61,41 @@ body {
   background: rgba(129, 140, 248, 0.3);
   color: #e2e8f0;
 }
+
+/* Keyboard focus */
+:focus-visible {
+  outline: 2px solid var(--accent-indigo);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Skip link: hidden until focused */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 6000;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  translate: -200vw 0;
+}
+.skip-link:focus {
+  translate: 0 0;
+}
+
+/* Respect the OS "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

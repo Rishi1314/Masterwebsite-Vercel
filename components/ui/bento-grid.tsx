@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { IoCopyOutline } from "react-icons/io5";
 import { cn } from "@/utils/cn";
 import { BackgroundGradientAnimation } from "./background-gradient-animation";
 import { BackgroundBeams } from "./background-beams";
 import GitHubCalendar from "react-github-calendar";
 import MagicButton from "../MagicButton";
+import { about, site } from "@/data/profile";
 
 export const BentoGrid = ({
   className,
@@ -62,7 +62,6 @@ export const BentoGridItem = ({
   img,
   imgClassName,
   titleClassName,
-  spareImg,
 }: {
   className?: string;
   id: number;
@@ -71,17 +70,14 @@ export const BentoGridItem = ({
   img?: string;
   imgClassName?: string;
   titleClassName?: string;
-  spareImg?: string;
 }) => {
-  /* Updated stacks to match actual skills */
-  const leftLists  = ["TypeScript", "Go", "Python"];
-  const rightLists = ["Next.js", "FastAPI", "Redis"];
+  const leftLists  = about.stackLeft;
+  const rightLists = about.stackRight;
 
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("rishirajprof@gmail.com");
-    setCopied(true);
+    navigator.clipboard.writeText(site.email).then(() => setCopied(true)).catch(() => {});
     setTimeout(() => setCopied(false), 2500);
   };
 
@@ -103,18 +99,13 @@ export const BentoGridItem = ({
         {/* Optional background image */}
         <div className="w-full h-full absolute">
           {img && (
+            // Decorative SVG background; next/image adds nothing for an SVG here.
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={img}
               alt=""
               className={cn(imgClassName, "object-cover object-center opacity-30")}
             />
-          )}
-        </div>
-
-        {/* Spare image */}
-        <div className={`absolute right-0 -bottom-5 ${id === 5 ? "w-full opacity-25" : ""}`}>
-          {spareImg && (
-            <img src={spareImg} alt="" className="object-cover object-center w-full h-full" />
           )}
         </div>
 
@@ -129,7 +120,9 @@ export const BentoGridItem = ({
         <div
           className={cn(
             titleClassName,
-            "group-hover/bento:translate-x-1 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 py-5 lg:p-8"
+            "group-hover/bento:translate-x-1 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 py-5 lg:p-8",
+            // Card 3: keep the text clear of the pill columns on the right
+            id === 3 && "pr-48 lg:pr-56 min-h-56"
           )}
         >
           {/* Description label */}
@@ -153,7 +146,7 @@ export const BentoGridItem = ({
           {id === 2 && (
             <div className="mt-4 z-10 scale-90 origin-left">
               <GitHubCalendar
-                username="rishi1314"
+                username={site.githubUser}
                 hideColorLegend
                 colorScheme="dark"
                 theme={{
@@ -165,7 +158,7 @@ export const BentoGridItem = ({
 
           {/* Card 3: Tech stack pills */}
           {id === 3 && (
-            <div className="flex gap-2 lg:gap-3 w-fit absolute -right-2 top-8">
+            <div className="flex gap-2 lg:gap-3 w-fit absolute right-4 top-8">
               <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
                 {leftLists.map((item, i) => (
                   <span
