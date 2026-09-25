@@ -1,38 +1,32 @@
 {
-  "name": "pw",
+  "name": "rishiraj-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.0.0-alpha.1",
-    "next": "15.0.7",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
-    "react-github-calendar": "^4.5.1",
-    "react-icons": "^5.4.0",
-    "react-lottie": "^1.2.10",
+    "framer-motion": "^12.43.0",
+    "next": "15.5.26",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-github-calendar": "^4.5.11",
+    "react-icons": "^5.7.0",
     "tailwind-merge": "^2.5.5"
-  },
-  "overrides": {
-    "framer-motion": {
-      "react": "19.0.0-rc-66855b96-20241106",
-      "react-dom": "19.0.0-rc-66855b96-20241106"
-    }
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@types/react-lottie": "^1.2.10",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.2.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
-    "eslint-config-next": "15.0.4",
+    "eslint-config-next": "15.5.26",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.16",
     "typescript": "^5"

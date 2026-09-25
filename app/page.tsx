@@ -9,17 +9,19 @@ import Contact from '@/components/Contact'
 
 const page = () => {
   return (
-    <main className="relative flex justify-center items-center flex-col overflow-hidden">
-      <div className="w-full">
-        <Navbar />
-        <Hero />
-        <Grid />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Contact />
-      </div>
-    </main>
+    <>
+      <Navbar />
+      <main id="main" tabIndex={-1} className="relative flex justify-center items-center flex-col overflow-hidden outline-none">
+        <div className="w-full">
+          <Hero />
+          <Grid />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Contact />
+        </div>
+      </main>
+    </>
   )
 }
 
